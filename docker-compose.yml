@@ -1,0 +1,43 @@
+# Local PDF Studio - hosted stack.
+#   app   : the PDF Studio container (front-end + engine, port 8080 internal)
+#   caddy : reverse proxy that terminates HTTPS with an automatic, free,
+#           auto-renewing Let's Encrypt certificate for your domain.
+#
+# Quick start on your VPS:
+#   1. copy this folder up
+#   2. cp .env.example .env  &&  edit SITE_ADDRESS to your domain
+#   3. docker compose up -d --build
+# See DEPLOY.md for the full walkthrough.
+
+services:
+  app:
+    build: .
+    image: pdf-studio
+    restart: unless-stopped
+    environment:
+      - PORT=8080
+      - SERVE_STATIC=1
+      - MAX_UPLOAD_MB=${MAX_UPLOAD_MB:-100}
+    expose:
+      - "8080"
+    tmpfs:
+      - /tmp
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - SITE_ADDRESS=${SITE_ADDRESS:-:80}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:

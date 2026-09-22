@@ -1,0 +1,28 @@
+{
+  "name": "local-pdf-editor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "engine": "node engine-server.cjs",
+    "dev:full": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$engine = Start-Process npm.cmd -ArgumentList 'run','engine' -PassThru -WindowStyle Hidden; npm.cmd run dev -- --port 5173; Stop-Process -Id $engine.Id -ErrorAction SilentlyContinue\"",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "node engine-server.cjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.6.0",
+    "docx": "^9.7.1",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.468.0",
+    "mammoth": "^1.12.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.3.93",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tesseract.js": "^7.0.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  }
+}

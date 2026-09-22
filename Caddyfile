@@ -1,0 +1,11 @@
+# Caddy reverse proxy for Local PDF Studio.
+# SITE_ADDRESS comes from the .env file:
+#   - a domain (e.g. pdf.example.com)  -> automatic HTTPS via Let's Encrypt
+#   - ":80"                            -> plain HTTP (testing / no domain yet)
+{$SITE_ADDRESS} {
+	encode zstd gzip
+	reverse_proxy app:8080
+	request_body {
+		max_size 120MB
+	}
+}

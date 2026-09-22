@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360" role="img" aria-label="PDF Studio — a browser PDF editor with a professional engine">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2620"/>
+      <stop offset="0.55" stop-color="#3b3125"/>
+      <stop offset="1" stop-color="#241f19"/>
+    </linearGradient>
+    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdfaf3"/>
+      <stop offset="1" stop-color="#f2ead9"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4a259"/>
+      <stop offset="0.5" stop-color="#e76f51"/>
+      <stop offset="1" stop-color="#e9c46a"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <style>
+      .title  { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-weight: 800; fill: #fdfaf3; }
+      .sub    { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-weight: 500; fill: #d8c7a8; }
+      .chip   { font-family: 'Segoe UI', system-ui, sans-serif; font-weight: 700; fill: #241f19; }
+      .sheet  { transform-box: fill-box; transform-origin: center; animation: float 6s ease-in-out infinite; }
+      .line   { stroke: #cdbfa6; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 220; stroke-dashoffset: 220; animation: draw 5s ease-in-out infinite; }
+      .l2 { animation-delay: .35s } .l3 { animation-delay: .7s } .l4 { animation-delay: 1.05s } .l5 { animation-delay: 1.4s }
+      .scan   { animation: scan 4s ease-in-out infinite; }
+      .spark  { transform-box: fill-box; transform-origin: center; animation: pop 3.4s ease-in-out infinite; }
+      .s2 { animation-delay: .6s } .s3 { animation-delay: 1.2s } .s4 { animation-delay: 1.8s } .s5 { animation-delay: 2.4s }
+      .glow   { animation: glow 4s ease-in-out infinite; }
+      .titleIn{ opacity: 0; animation: rise .9s ease-out .2s forwards; }
+      .subIn  { opacity: 0; animation: rise .9s ease-out .55s forwards; }
+      .chipG  { opacity: 0; animation: rise .8s ease-out forwards; }
+      .c2{animation-delay:.75s}.c3{animation-delay:.9s}.c4{animation-delay:1.05s}.c5{animation-delay:1.2s}
+      @keyframes float { 0%,100%{ transform: translateY(0) rotate(-1.5deg) } 50%{ transform: translateY(-12px) rotate(0.5deg) } }
+      @keyframes draw  { 0%{ stroke-dashoffset:220 } 45%,55%{ stroke-dashoffset:0 } 100%{ stroke-dashoffset:220 } }
+      @keyframes scan  { 0%{ transform: translateY(0); opacity:0 } 10%{opacity:.9} 50%{ transform: translateY(150px); opacity:.9 } 60%{opacity:0} 100%{opacity:0} }
+      @keyframes pop   { 0%,100%{ transform: scale(.4); opacity:0 } 50%{ transform: scale(1); opacity:1 } }
+      @keyframes glow  { 0%,100%{ opacity:.35 } 50%{ opacity:.8 } }
+      @keyframes rise  { from{ opacity:0; transform: translateY(14px) } to{ opacity:1; transform: translateY(0) } }
+      @media (prefers-reduced-motion: reduce) {
+        .sheet,.line,.scan,.spark,.glow,.titleIn,.subIn,.chipG { animation: none; opacity: 1; stroke-dashoffset: 0; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="360" fill="url(#bg)"/>
+  <circle class="glow" cx="150" cy="90" r="180" fill="#e76f51" opacity="0.35" filter="url(#soft)"/>
+  <circle class="glow" cx="1080" cy="300" r="160" fill="#e9c46a" opacity="0.30" filter="url(#soft)"/>
+
+  <!-- floating document -->
+  <g class="sheet" transform="translate(120,60)">
+    <rect x="0" y="0" width="230" height="290" rx="14" fill="url(#sheet)"/>
+    <rect x="0" y="0" width="230" height="290" rx="14" fill="none" stroke="#e2d4b8" stroke-width="2"/>
+    <rect x="24" y="26" width="120" height="18" rx="6" fill="url(#accent)"/>
+    <line class="line"    x1="24" y1="78"  x2="206" y2="78"/>
+    <line class="line l2" x1="24" y1="108" x2="206" y2="108"/>
+    <line class="line l3" x1="24" y1="138" x2="176" y2="138"/>
+    <line class="line l4" x1="24" y1="168" x2="206" y2="168"/>
+    <line class="line l5" x1="24" y1="198" x2="150" y2="198"/>
+    <rect class="scan" x="6" y="60" width="218" height="14" rx="7" fill="#f4a259" opacity="0.5"/>
+    <rect x="150" y="232" width="56" height="34" rx="8" fill="#e76f51"/>
+    <text x="178" y="255" text-anchor="middle" class="chip" font-size="15">PDF</text>
+  </g>
+
+  <!-- floating tool sparks -->
+  <circle class="spark"    cx="405" cy="95"  r="9" fill="#f4a259"/>
+  <circle class="spark s2" cx="372" cy="150" r="6" fill="#e9c46a"/>
+  <circle class="spark s3" cx="415" cy="205" r="7" fill="#e76f51"/>
+  <circle class="spark s4" cx="378" cy="255" r="5" fill="#f4a259"/>
+  <circle class="spark s5" cx="410" cy="300" r="6" fill="#e9c46a"/>
+
+  <!-- headline -->
+  <g transform="translate(470,120)">
+    <text class="title titleIn" x="0" y="0" font-size="76" letter-spacing="-2">PDF Studio</text>
+    <text class="sub subIn" x="2" y="46" font-size="25">A browser PDF editor with a real professional engine.</text>
+    <text class="sub subIn" x="2" y="80" font-size="19" opacity="0.85">Edit · OCR · Convert · Compress · Redact · Recover passwords — nothing leaves your server.</text>
+
+    <g transform="translate(2,112)">
+      <g class="chipG">   <rect x="0"   y="0" width="118" height="34" rx="17" fill="url(#accent)"/><text class="chip" x="59"  y="22" text-anchor="middle" font-size="14">Local-first</text></g>
+      <g class="chipG c2"><rect x="130" y="0" width="96"  height="34" rx="17" fill="#f2ead9"/><text class="chip" x="178" y="22" text-anchor="middle" font-size="14">PyMuPDF</text></g>
+      <g class="chipG c3"><rect x="238" y="0" width="86"  height="34" rx="17" fill="#f2ead9"/><text class="chip" x="281" y="22" text-anchor="middle" font-size="14">pikepdf</text></g>
+      <g class="chipG c4"><rect x="336" y="0" width="112" height="34" rx="17" fill="#f2ead9"/><text class="chip" x="392" y="22" text-anchor="middle" font-size="14">PP-OCRv4</text></g>
+      <g class="chipG c5"><rect x="460" y="0" width="104" height="34" rx="17" fill="#f2ead9"/><text class="chip" x="512" y="22" text-anchor="middle" font-size="14">Dockerized</text></g>
+    </g>
+  </g>
+</svg>

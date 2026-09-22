@@ -1,0 +1,31 @@
+# Python packages for the Local PDF Studio engine (engine.py).
+# Installed inside the Docker image; on Windows install with:
+#   python -m pip install -r requirements.txt
+pymupdf==1.28.0
+pikepdf==10.9.1
+pdf2docx==0.5.8
+python-docx==1.2.0
+python-pptx==1.0.2
+openpyxl==3.1.5
+pillow==12.3.0
+# Photo watermark engine (matte inversion + inpainting). Headless = no GUI libs,
+# correct for a server; still ships cv2.inpaint and all array ops we use.
+numpy==2.1.1
+opencv-python-headless==4.10.0.84
+# Deep inpainting tier (LaMa, ONNX). CPU-only, ~7s/patch - a real quality step
+# up over classical inpainting on complex/opaque marks, worth it on a
+# dedicated VPS. Optional: engine.py degrades to classical inpainting if this
+# or engine/models/lama_fp32.onnx is missing (see photo_watermark.py).
+onnxruntime==1.29.0
+
+# OCR tier (PP-OCRv4 detection + recognition, ONNX). The wheel BUNDLES its
+# models (~16 MB), so there is no runtime download - which is exactly the
+# failure mode of the browser tesseract.js path this replaces. Installed with
+# --no-deps in the Dockerfile so it reuses the headless OpenCV above instead
+# of pulling the GUI build; these are its remaining requirements.
+rapidocr-onnxruntime==1.4.4
+pyclipper==1.4.0
+shapely==2.1.2
+PyYAML==6.0.3
+six==1.17.0
+tqdm==4.67.1

@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+
+# Large ONNX model weights (198MB + 168MB) - over GitHub's 100MB file limit.
+# Kept locally; re-download separately, don't try to commit these.
+engine/models/
+
+__pycache__/
+*.pyc
+work/
+outputs/
+.DS_Store
+
+# Internal QA scratch + infra ops notes — not for the public repo
+TEST-MATRIX.md
+engine/tests/proof/
+engine/tests/_ops_work/
+engine/tests/_org_work/
+status_live.json
